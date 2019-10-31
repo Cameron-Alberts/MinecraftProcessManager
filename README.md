@@ -2,6 +2,8 @@
 Process manager to keep your minecraft server healthy and running.
 
 # Example
+
+```
 python launcher.py --hostname localhost ^
                    --port 25565 ^
                    --working-directory "C:\Users\MyName\rl_craft" ^
@@ -13,6 +15,7 @@ python launcher.py --hostname localhost ^
                    --time-to-sleep-after-start 60 ^
                    --ping-socket-connection-timeout 1 ^
                    --gui
+```
 
 # OS
 Only tested on Windows
