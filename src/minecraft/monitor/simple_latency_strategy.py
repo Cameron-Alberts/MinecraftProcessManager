@@ -34,9 +34,9 @@ class SimpleLatencyHealthMonitorStrategy(AbstractHealthMonitorStrategy):
         if healthy:
             log.info("Moving window health checks healthy! health_checks={}".format(self.__health_checks))
         else:
+            log.warning("Moving window health checks unhealthy! health_checks={}".format(self.__health_checks))
             # Reset health checks, since returning unhealthy will cause the server to bounce
             self.__health_checks = [True] * self.__health_checks_queue_size
-            log.warning("Moving window health checks unhealthy! health_checks={}".format(self.__health_checks))
         return healthy
 
     def __is_latency_healthy(self, ping_responses):
