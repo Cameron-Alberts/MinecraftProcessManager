@@ -3,7 +3,6 @@ import inspect
 import importlib
 import json
 import logging
-import pydoc
 
 from minecraft.monitor.health_monitor_strategy import AbstractHealthMonitorStrategy
 from minecraft.process.process_manager import ProcessManager

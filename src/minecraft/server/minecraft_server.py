@@ -1,5 +1,4 @@
 import logging as log
-import psutil
 import subprocess
 import socket
 import time

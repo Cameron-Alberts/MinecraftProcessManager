@@ -22,6 +22,7 @@ class SimpleLatencyHealthMonitorStrategy(AbstractHealthMonitorStrategy):
             raise ValueError("expected_percent_healthy should be between (0.0, 1.0]")
         self.__max_latency = max_latency_in_seconds
         self.__number_of_pings = number_of_pings
+        self.__health_checks_queue_size = health_checks_queue_size
         self.__health_checks = [True] * health_checks_queue_size
         self.__expected_percent_healthy = expected_percent_healthy
 
@@ -33,6 +34,8 @@ class SimpleLatencyHealthMonitorStrategy(AbstractHealthMonitorStrategy):
         if healthy:
             log.info("Moving window health checks healthy! health_checks={}".format(self.__health_checks))
         else:
+            # Reset health checks, since returning unhealthy will cause the server to bounce
+            self.__health_checks = [True] * self.__health_checks_queue_size
             log.warning("Moving window health checks unhealthy! health_checks={}".format(self.__health_checks))
         return healthy
 
