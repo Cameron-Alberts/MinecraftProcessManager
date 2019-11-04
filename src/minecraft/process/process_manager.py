@@ -25,6 +25,7 @@ class ProcessManager(object):
                     self.__minecraft_server.start()
                     log.info("Restarted server sleeping for {} seconds".format(self.__time_to_sleep_after_start))
                     time.sleep(self.__time_to_sleep_after_start)
+                    continue
             except:
                 log.error("Unexpected exception while managing server process!", exc_info=1)
 

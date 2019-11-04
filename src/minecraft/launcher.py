@@ -113,7 +113,7 @@ def build_args():
 
     return parser.parse_args()
 
-if __name__ == '__main__':
+def main():
     setup_logging()
     args = build_args()
     minecraft_server = MinecraftServer(
