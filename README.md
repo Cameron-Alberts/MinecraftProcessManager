@@ -10,7 +10,7 @@ python -m pip install -U pip
 pip install setuptools
 ```
 
-Requires git which can installed from
+Requires git which can installed from.
 
 ```
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
@@ -22,6 +22,11 @@ Now build and install the distribution.
 git clone https://github.com/Cameron-Alberts/MinecraftProcessManager
 python setup.py build
 python setup.py install
+```
+
+Now you can start the process manager from command line.
+
+```
 start_process_manager --hostname localhost ^
                       --port 25565 ^
                       --working-directory "C:\rl_craft" ^
@@ -33,6 +38,24 @@ start_process_manager --hostname localhost ^
                       --time-to-sleep-after-start 60 ^
                       --ping-socket-connection-timeout 1 ^
                       --gui
+```
+
+You can also set it up into a batch file so that it can be executed when your computer restarts or convenience when manually running it.
+
+```
+@ECHO OFF
+start_process_manager.exe --hostname localhost ^
+						  --port 25565 ^
+						  --working-directory "C:\rl_craft" ^
+						  --server-jar server.jar ^
+					  	  --jvm-args "-Dfml.readTimeout=300 -Xmx6g -Xms6g -XX:+UseParallelGC" ^
+						  --health-check-strategy simple_latency_strategy ^
+						  --health-check-strategy-args "{\"health_checks_queue_size\": 6}" ^
+						  --health-check-delay 5 ^
+						  --time-to-sleep-after-start 45 ^
+						  --ping-socket-connection-timeout 1 ^
+						  --gui
+@pause
 ```
 
 For additional help with commands.
